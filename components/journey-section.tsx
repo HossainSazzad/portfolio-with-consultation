@@ -72,7 +72,7 @@ export function JourneySection() {
             Where I&apos;ve Been &amp; Where I Am
           </h2>
           <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-            Over 5+ years of software engineering experience across global
+            Over 7+ years of software engineering experience across global
             products and top e-commerce platforms -- a journey that took me from
             studying in Bangladesh to shipping software in international tech
             hubs.
