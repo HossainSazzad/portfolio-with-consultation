@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from '@/components/theme-provider'
 
 const links = [
   { href: '#journey', label: 'Journey' },
@@ -10,6 +12,7 @@ const links = [
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false)
+  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -44,12 +47,25 @@ export function SiteNav() {
             </a>
           ))}
         </div>
-        <a
-          href="#booking"
-          className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
-        >
-          Book a Call
-        </a>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggle}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-muted/50 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </button>
+          <a
+            href="#booking"
+            className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
+          >
+            Book a Call
+          </a>
+        </div>
       </nav>
     </header>
   )

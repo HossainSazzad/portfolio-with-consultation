@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,8 +41,11 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#2a2620',
+  colorScheme: 'dark light',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#2a2620' },
+    { media: '(prefers-color-scheme: light)', color: '#faf9f7' },
+  ],
 }
 
 export default function RootLayout({
@@ -53,9 +57,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`dark bg-background ${inter.variable} ${fraunces.variable}`}
+      suppressHydrationWarning
     >
       <body className="font-sans antialiased">
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
