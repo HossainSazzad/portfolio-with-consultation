@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`light bg-background ${inter.variable} ${fraunces.variable}`}
+      className={`dark bg-background ${inter.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
